@@ -2,6 +2,7 @@
 #include <sstream>
 #include <string>
 #include <cmath>
+#include <float.h>
 ScalarConverter::ScalarConverter(){
 
 }
@@ -94,8 +95,10 @@ std::string ScalarConverter::toFloat(const std::string &s)
 	}
 	if (ScalarConverter::isInvalidInput(s))
 		return ("impossible");
-	float numerical = static_cast<float>(std::atof(s.c_str()));
+	double numerical = static_cast<double>(std::atof(s.c_str()));
 	if (numerical == INFINITY || numerical == -INFINITY)
+		return ("impossible");
+	if (numerical > FLT_MAX || numerical < FLT_MIN)
 		return ("impossible");
 	out << numerical;
 	if (out.str().find(".") == std::string::npos)
