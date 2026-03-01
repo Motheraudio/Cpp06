@@ -4,11 +4,11 @@
 #include <cstdlib>
 class ScalarConverter {
 public:
-  ScalarConverter(const ScalarConverter& obj);
-  virtual ~ScalarConverter() = 0;
   static void convert(const std::string literal);
-  ScalarConverter& operator=(const ScalarConverter& obj);
 private:
+  ScalarConverter& operator=(const ScalarConverter& obj);
+  virtual ~ScalarConverter() = 0;
+  ScalarConverter(const ScalarConverter& obj);
   ScalarConverter();
   static std::string toChar(const std::string &s);
   static std::string toInt(const std::string &s);
